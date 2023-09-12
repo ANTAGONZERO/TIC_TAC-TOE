@@ -1,4 +1,5 @@
 package JAVA_LEETCODE.projects;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -115,6 +116,10 @@ public class TicTacToeGUI extends JFrame {
             return "X";
         }
 
+        if (isDraw(board)) {
+            return "Draw"; // It's a draw
+        }
+
         return "None"; // If no winner is found, continue the game
     }
 
@@ -156,6 +161,11 @@ public class TicTacToeGUI extends JFrame {
         }
 
         return false; // No win for "X"
+    }
+
+    private boolean isDraw(String[][] board) {
+        // Check if the board is full and no player has won
+        return isGameOver() && !player1check(board) && !player2check(board);
     }
 
     private void disableAllButtons() {
